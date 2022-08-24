@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -16,12 +18,15 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 public class Annonce {
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private LocalDateTime dateHeureCreation;
 	private LocalDateTime dateHeureDebut;
 	private LocalDateTime dateHeureFin;
 	private String contenu;
+	
 	
 	@NotBlank(message="Merci de préciser un numero de carte")
 	private String numeroCarte;
@@ -44,7 +49,7 @@ public class Annonce {
 	
 	// verifier l'attribut mappedby
 	@ManyToMany
-	private List<TrancheHoraire> trancheHoraire;
+	private List<TrancheHoraire> trancheHoraires;
 	
 	@ManyToMany
 	private List<Zone> zones;
