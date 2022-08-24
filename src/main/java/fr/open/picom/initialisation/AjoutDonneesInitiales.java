@@ -3,6 +3,9 @@ package fr.open.picom.initialisation;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import fr.open.picom.business.Administrateur;
+import fr.open.picom.business.Client;
+import fr.open.picom.business.Zone;
 import fr.open.picom.dao.AdministrateurDao;
 import fr.open.picom.dao.ArretDao;
 import fr.open.picom.dao.ClientDao;
@@ -33,7 +36,13 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 	}
 
 	private void ajouterZones() {
-
+		
+		zoneDao.save(new Zone("Republique"));
+		zoneDao.save(new Zone("Avenue kennedy"));
+		zoneDao.save(new Zone("Open"));
+		zoneDao.save(new Zone("Developpeur"));
+		zoneDao.save(new Zone("LA MEL"));
+		
 	}
 
 	private void ajouterArrets() {
@@ -45,11 +54,17 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 	}
 
 	private void ajouterClient() {
-
+		Client clientTest = new Client();
+		clientTest.setNom("Testeur");
+		clientTest.setPrenom("Dev");
+		clientTest.setEmail("client1@orsys.fr");
+		clientTest.setMotDePasse("12345678");
+		clientDao.save(clientTest);
 	}
 
 	private void ajouterAdmin() {
-
+		Administrateur admin = new Administrateur("Admin", "Test", "admin1@orsys.fr", "12345678");
+		administrateurDao.save(admin);
 	}
 
 }
