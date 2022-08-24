@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.open.picom.business.Client;
@@ -57,16 +58,18 @@ public class PicomController {
 	}
 	
 	@PostMapping("connexion")
-	public ModelAndView connexionPost(@Valid @ModelAttribute Client client ){
+	public ModelAndView connexionPost(@RequestParam("EMAIL") String email,
+			@RequestParam("MOT_DE_PASSE") String motDePasse) {
 		
-		Client clientAuth = utilisateurService.recupererUtilisateur(client.getEmail(), client.getMotDePasse());
+		Client clientAuth = utilisateurService.recupererUtilisateur(email, motDePasse);
   
 		if (clientAuth == null) {
 	
-			return connexionGet(client);
+			return connexionGet(clientAuth);
 			
 		} else {
 			System.out.println("Connected");
+			httpSession.setAttribute("utilisateur", clientAuth);
 			return new ModelAndView("redirect:/");
 		}
 	}

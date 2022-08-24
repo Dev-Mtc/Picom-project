@@ -7,6 +7,6 @@
 <body>
 
 	<p>Working !</p>
-	<a href="inscription">S'inscrire</a>
+	<a href="connexion">Se connecter</a>
 </body>
 </html>
