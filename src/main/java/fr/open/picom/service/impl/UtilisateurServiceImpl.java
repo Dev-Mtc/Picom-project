@@ -25,7 +25,7 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 
 	@Override
 	public Client recupererUtilisateur(String email, String motDePasse) {
-		return (Client)utilisateurDao.findUserByEmailPassword(email, motDePasse);
+		return (Client)clientDao.findUserByEmailPassword(email, motDePasse);
 	}
 
 }

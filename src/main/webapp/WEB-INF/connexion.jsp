@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,21 +9,16 @@
 </head>
 <body>
 	<div class="container">
-		<!-- Spring va injecter l'objet métier dans le  -->
-		<!-- formulaire ci-dessous -->
-		<form:form modelAttribute="utilisateur" action="connexion"
-			method="post" cssClass="connexion-form">
-			<h1>Page de connexion</h1>
-			<form:label path="email">Email</form:label>
-			<form:input path="email" />
-			<form:errors path="email" cssClass="erreur" />
-			<br>
-			<form:label path="motDePasse">Mot de passe</form:label>
-			<form:password path="motDePasse" />
-			<form:errors path="motDePasse" cssClass="erreur" />
-			<br>
-			<form:button>Connexion</form:button>
-		</form:form>
+		<form action="connexion" method="post" class="inscription-form">
+			<c:if test="${param.notification ne null}">
+				<h2>${param.notification}</h2>
+			</c:if>
+			<h1>Connexion</h1>
+			<input type="email" name="EMAIL" placeHolder="Email" required><br>
+			<input type="password" name="MOT_DE_PASSE" placeHolder="Mot de Passe"
+				required> <br> <input type="submit" value="Connexion">
+			<a href="inscription">S'inscrire</a>
+		</form>
 	</div>
 
 </body>
