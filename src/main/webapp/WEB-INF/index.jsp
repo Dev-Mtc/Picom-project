@@ -7,5 +7,6 @@
 <body>
 
 	<p>Working !</p>
+	<a href="inscription">S'inscrire</a>
 </body>
 </html>
