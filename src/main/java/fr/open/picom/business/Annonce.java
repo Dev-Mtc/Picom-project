@@ -51,6 +51,7 @@ public class Annonce {
 	@ManyToMany
 	private List<TrancheHoraire> trancheHoraires;
 	
+	//TODO tcheck the relation
 	@ManyToMany
 	private List<Zone> zones;
 	
