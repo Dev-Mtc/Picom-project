@@ -38,11 +38,11 @@ public class Annonce {
 	@NotBlank(message="Merci de préciser le montant")
 	private double montantRegleEnEuros;
 	
-	//todo utilsateur annonce non necessaire
+	//TODO utilsateur annonce non necessaire
 	@ManyToOne
 	private Client client;
 	
-	// verifier l'attribut mappedby
+	//TODO verifier l'attribut mappedby
 	@ManyToMany
 	private List<TrancheHoraire> trancheHoraire;
 	
