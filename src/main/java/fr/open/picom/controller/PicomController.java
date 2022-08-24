@@ -1,5 +1,6 @@
 package fr.open.picom.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.open.picom.business.Client;
+import fr.open.picom.business.Utilisateur;
 import fr.open.picom.service.UtilisateurService;
 import lombok.AllArgsConstructor;
 
@@ -21,6 +23,7 @@ import lombok.AllArgsConstructor;
 public class PicomController {
 	
 	private UtilisateurService utilisateurService; 
+	private final HttpSession httpSession;
 	
 	@RequestMapping(value = { "/index"}, method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView picom() {
@@ -53,4 +56,18 @@ public class PicomController {
 		return new ModelAndView("connexion");
 	}
 	
+	@PostMapping("connexion")
+	public ModelAndView connexionPost(@Valid @ModelAttribute Client client ){
+		
+		Client clientAuth = utilisateurService.recupererUtilisateur(client.getEmail(), client.getMotDePasse());
+  
+		if (clientAuth == null) {
+	
+			return connexionGet(client);
+			
+		} else {
+			System.out.println("Connected");
+			return new ModelAndView("redirect:/");
+		}
+	}
 }
