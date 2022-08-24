@@ -11,7 +11,7 @@
 	<div class="container">
 		<!-- Spring va injecter l'objet métier dans le  -->
 		<!-- formulaire ci-dessous -->
-		<form:form modelAttribute="utilisateur" action="Connexion"
+		<form:form modelAttribute="utilisateur" action="connexion"
 			method="post" cssClass="connexion-form">
 			<h1>Page de connexion</h1>
 			<form:label path="email">Email</form:label>
