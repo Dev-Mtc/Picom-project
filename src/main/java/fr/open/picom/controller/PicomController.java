@@ -48,4 +48,10 @@ public class PicomController {
 		}
 	}
 	
+	@GetMapping("connexion")
+	public ModelAndView connexionGet(@ModelAttribute Utilisateur utilisateur) {
+
+		return new ModelAndView("connexion");
+	}
+	
 }
