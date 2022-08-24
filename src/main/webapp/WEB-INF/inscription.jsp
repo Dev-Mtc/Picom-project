@@ -11,7 +11,7 @@
 	<div class="container">
 		<!-- Spring va injecter l'objet métier dans le  -->
 		<!-- formulaire ci-dessous -->
-		<form:form modelAttribute="utilisateur" action="inscription"
+		<form:form modelAttribute="client" action="inscription"
 			
 			method="post" cssClass="inscription-form">
 			<h1>Inscription</h1>
@@ -31,9 +31,9 @@
 			<form:password path="motDePasse" />
 			<form:errors path="motDePasse" cssClass="erreur" />
 			<br>
-			<form:label path="motDePasse">Numéro de telephone</form:label>
-			<form:password path="motDePasse" />
-			<form:errors path="motDePasse" cssClass="erreur" />
+			<form:label path="numeroDeTelephone">Numéro de telephone</form:label>
+			<form:input path="numeroDeTelephone" />
+			<form:errors path="numeroDeTelephone" cssClass="erreur" />
 			<br>
 			<form:button>Inscription</form:button>
 		</form:form>

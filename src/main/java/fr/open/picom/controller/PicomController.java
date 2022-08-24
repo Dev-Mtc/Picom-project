@@ -12,16 +12,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.open.picom.business.Client;
-import fr.open.picom.business.Utilisateur;
-import fr.open.picom.service.ClientService;
-
-
+import fr.open.picom.service.UtilisateurService;
+import lombok.AllArgsConstructor;
 
 
 @Controller
+@AllArgsConstructor
 public class PicomController {
 	
-	private ClientService clientService; 
+	private UtilisateurService utilisateurService; 
 	
 	@RequestMapping(value = { "/index"}, method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView picom() {
@@ -32,18 +31,18 @@ public class PicomController {
 		return mav;
 	}
 	@GetMapping("inscription")
-	public ModelAndView inscriptionGet(@ModelAttribute Utilisateur utilisateur) {
+	public ModelAndView inscriptionGet(@ModelAttribute Client client) {
 
 		return new ModelAndView("inscription");
 	}
 	
 	@PostMapping("inscription")
-	public ModelAndView inscriptionPost(@Valid @ModelAttribute Client utilisateur, BindingResult result) {
+	public ModelAndView inscriptionPost(@Valid @ModelAttribute Client client, BindingResult result) {
 		if (result.hasErrors()) {
 	
-			return inscriptionGet(utilisateur);
+			return inscriptionGet(client);
 		} else {
-			clientService.enregistrerUtilisateur(utilisateur);
+			utilisateurService.enregistrerUtilisateur(client);
 			return new ModelAndView("redirect:/");
 		}
 	}
