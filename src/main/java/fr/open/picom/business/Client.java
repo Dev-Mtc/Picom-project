@@ -6,18 +6,20 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 @Entity
-@Data
+@Getter
+@Setter
 public class Client extends Utilisateur {
 
 	@NotBlank(message="Merci de préciser un numero de telephone")
 	private String numeroDeTelephone;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "client")
 	private List<Annonce> annonces;
 	
 	

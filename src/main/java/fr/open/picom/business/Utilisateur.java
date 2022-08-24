@@ -19,7 +19,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
-public abstract class Utilisateur {
+public class Utilisateur {
 	
 	public Utilisateur(String nom, String prenom, String email, String password) {
 		this.nom = nom;
