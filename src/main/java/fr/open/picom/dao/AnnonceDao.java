@@ -9,4 +9,6 @@ import fr.open.picom.business.Annonce;
 public interface AnnonceDao extends JpaRepository<Annonce, Long> {
 	
 	List<Annonce> findAll();
+	
+	
 }
