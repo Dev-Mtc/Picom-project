@@ -1,5 +1,8 @@
 package fr.open.picom.service;
 
-public interface UtilisateurService {
+import fr.open.picom.business.Client;
 
+
+public interface UtilisateurService {
+	Client enregistrerUtilisateur(Client utilisateur);
 }
