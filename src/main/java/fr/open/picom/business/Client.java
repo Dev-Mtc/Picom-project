@@ -6,10 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Entity
+@Data
 public class Client extends Utilisateur {
 
 	@NotBlank(message="Merci de préciser un numero de telephone")

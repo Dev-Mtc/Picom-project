@@ -105,6 +105,7 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 		clientTest.setPrenom("Dev");
 		clientTest.setEmail("client1@orsys.fr");
 		clientTest.setMotDePasse("12345678");
+		clientTest.setNumeroDeTelephone("079");
 		clientDao.save(clientTest);
 	}
 
