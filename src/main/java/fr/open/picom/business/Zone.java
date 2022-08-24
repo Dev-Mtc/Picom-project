@@ -12,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -19,6 +20,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class Zone {
 
@@ -27,7 +29,7 @@ public class Zone {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message="Merci de le nom de la zone")
+	@NotBlank(message="Merci d'indiquer le nom de la zone")
 	private String nom;
 	
 	@ManyToMany

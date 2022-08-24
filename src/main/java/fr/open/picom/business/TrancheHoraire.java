@@ -7,14 +7,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class TrancheHoraire {
 	
 	
@@ -26,9 +31,7 @@ public class TrancheHoraire {
 	
 	@ManyToMany
 	private List<Annonce> annonce;
-	
-	@ManyToOne
-	private Arret arret;
+
 	
 	public TrancheHoraire(int debut) {
 		this.debut = debut;

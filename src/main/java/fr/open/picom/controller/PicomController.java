@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import fr.open.picom.business.Annonce;
 import fr.open.picom.business.Client;
 import fr.open.picom.business.Utilisateur;
+import fr.open.picom.service.TrancheHoraireService;
 import fr.open.picom.service.UtilisateurService;
+import fr.open.picom.service.ZoneService;
 import lombok.AllArgsConstructor;
 
 
@@ -25,6 +28,8 @@ public class PicomController {
 	
 	private UtilisateurService utilisateurService; 
 	private final HttpSession httpSession;
+	private final ZoneService zoneService;
+	private final TrancheHoraireService trancheHoraireService;
 	
 	@RequestMapping(value = { "/index"}, method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView picom() {
@@ -72,5 +77,16 @@ public class PicomController {
 			httpSession.setAttribute("utilisateur", clientAuth);
 			return new ModelAndView("redirect:/");
 		}
+	}
+	
+
+
+	@GetMapping("annonces")
+	public ModelAndView annonceGet(@ModelAttribute Annonce annonce) {
+		ModelAndView mav =new ModelAndView("annonce");
+		mav.addObject("zones", this.zoneService.findAllZones());
+		mav.addObject("trancheHoraire", this.trancheHoraireService.findAllTrancheHoraire());
+		return mav;
+
 	}
 }

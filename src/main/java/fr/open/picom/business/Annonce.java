@@ -11,6 +11,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
+import io.micrometer.core.lang.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -31,16 +32,19 @@ public class Annonce {
 	@NotBlank(message="Merci de préciser un numero de carte")
 	private String numeroCarte;
 	
-	@NotBlank(message="Merci de préciser l'annee de l'expiration")
+//	@NotBlank(message="Merci de préciser l'annee de l'expiration")
+	@Nullable
 	private int anneeExpiration;
 	
-	@NotBlank(message="Merci de préciser une adresse email")
+//	@NotBlank(message="Merci de préciser un mois d'expiration")
+	@Nullable
 	private byte moisExpiration;
 	
 	@NotBlank(message="Merci de préciser le CIV")
 	private String cryptoGramme;
 	
-	@NotBlank(message="Merci de préciser le montant")
+//	@NotBlank(message="Merci de préciser le montant")
+	@Nullable
 	private double montantRegleEnEuros;
 	
 	//TODO utilsateur annonce non necessaire
