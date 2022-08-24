@@ -25,4 +25,8 @@ public class TrancheHoraire {
 	@ManyToOne
 	private Arret arret;
 	
+	public TrancheHoraire(int debut) {
+		this.debut = debut;
+	}
+	
 }
