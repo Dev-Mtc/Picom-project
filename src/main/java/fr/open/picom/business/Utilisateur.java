@@ -9,14 +9,25 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@RequiredArgsConstructor
 public abstract class Utilisateur {
 	
+	public Utilisateur(String nom, String prenom, String email, String password) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.motDePasse = password;
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
