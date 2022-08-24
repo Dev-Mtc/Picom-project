@@ -29,5 +29,10 @@ public class Arret {
 	@ManyToOne
 	private Zone zone;
 
-
+	public Arret(String nom, Double longitude, Double latitude) {
+		this.nom = nom;
+		this.longitude = longitude;
+		this.latitude = latitude;
+	}
+	
 }
