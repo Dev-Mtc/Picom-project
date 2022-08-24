@@ -8,5 +8,6 @@
 
 	<p>Working !</p>
 	<a href="connexion">Se connecter</a>
+	<a href="annonces">Ajouter une annonce</a>
 </body>
 </html>

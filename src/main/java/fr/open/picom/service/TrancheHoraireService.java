@@ -1,5 +1,9 @@
 package fr.open.picom.service;
 
-public interface TrancheHoraireService {
+import java.util.List;
 
+import fr.open.picom.business.TrancheHoraire;
+
+public interface TrancheHoraireService {
+	List<TrancheHoraire> findAllTrancheHoraire();
 }
