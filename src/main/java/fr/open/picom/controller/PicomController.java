@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.open.picom.business.Client;
+import fr.open.picom.business.Utilisateur;
 import fr.open.picom.service.UtilisateurService;
 import lombok.AllArgsConstructor;
 
