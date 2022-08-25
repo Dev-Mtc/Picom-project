@@ -67,7 +67,7 @@ public class PicomController {
 			@RequestParam("MOT_DE_PASSE") String motDePasse) {
 		
 		Client clientAuth = utilisateurService.recupererUtilisateur(email, motDePasse);
-  
+		
 		if (clientAuth == null) {
 	
 			return connexionGet(clientAuth);
@@ -87,6 +87,5 @@ public class PicomController {
 		mav.addObject("zones", this.zoneService.findAllZones());
 		mav.addObject("trancheHoraire", this.trancheHoraireService.findAllTrancheHoraire());
 		return mav;
-
-	}
+	}	
 }
