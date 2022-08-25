@@ -24,7 +24,7 @@ public class AnnonceServiceImpl implements AnnonceService {
 
 	@Override
 	public Annonce ajouterAnnonce(Annonce annonce) {
-		// TODO Auto-generated method stub
+
 		return annonceDao.save(annonce);
 	}
 	

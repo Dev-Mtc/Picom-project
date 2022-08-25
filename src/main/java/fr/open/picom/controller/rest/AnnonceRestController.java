@@ -24,14 +24,23 @@ import lombok.AllArgsConstructor;
 @RequestMapping("api/annonces/")
 public class AnnonceRestController {
 	
-	
+	//Déclaration des service utilisé 
 	private AnnonceService annonceService;
 
+	/**
+	 * Methode qui renvoi la liste des annonces disponnible dans la base de données
+	 * @return listes d'annonces
+	 */
 	@GetMapping("/")
 	public List<Annonce> annonceGet() {
 		return annonceService.findAnnonces();
 	}
-	
+
+	/**
+	 * Cette méthode renvoie une page d'utilisateur
+	 * @param annonce contient le corp de l'annonce 
+	 * @return l'annonce crée
+	 */
 	@PostMapping("new/annonce")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	public Annonce annoncePost(@Valid @RequestBody Annonce annonce, BindingResult result) {
