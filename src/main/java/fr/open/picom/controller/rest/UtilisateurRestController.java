@@ -11,7 +11,5 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("api/utilisateurs/")
 public class UtilisateurRestController {
-
-	
 	
 }
