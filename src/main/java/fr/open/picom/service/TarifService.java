@@ -11,4 +11,8 @@ public interface TarifService {
 	Tarif recupererTarif(Long id);
 	
 	Tarif ajouterTarif(Tarif tarif);
+
+	boolean supprimerTarif(Long id);
+	
+	Tarif mettreAJourTarif(Long id, double prixEnEuros);
 }
