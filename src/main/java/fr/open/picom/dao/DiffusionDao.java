@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import fr.open.picom.business.Annonce;
 import fr.open.picom.business.Arret;
 import fr.open.picom.business.Diffusion;
-import fr.open.picom.business.Zone;
 
 public interface DiffusionDao extends JpaRepository<Diffusion, Long> {
 
