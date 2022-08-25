@@ -1,10 +1,12 @@
 package fr.open.picom.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 import fr.open.picom.business.Diffusion;
+import fr.open.picom.dao.DiffusionDao;
 import fr.open.picom.service.DiffusionService;
 import lombok.AllArgsConstructor;
 
@@ -12,10 +14,16 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class DiffusionServiceImpl implements DiffusionService {
 
+	DiffusionDao diffusionDao;
+	
 	@Override
-	public Diffusion recupererDiffusion(LocalDateTime dateHeureDiffusion, Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Diffusion> recupererDiffusions() {
+		return diffusionDao.findAll();
 	}
+
+	@Override
+	public Diffusion recupererDiffusion(Long id) {
+		return diffusionDao.findById(id).orElse(null);	}
+
 
 }

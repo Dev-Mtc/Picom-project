@@ -1,21 +1,14 @@
 package fr.open.picom.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
 
-import fr.open.picom.business.Client;
+import fr.open.picom.business.Utilisateur;
 
 
 public interface UtilisateurService {
 	
+		
+	List<Utilisateur> recupererUtilisateurs();
 	
-	Client enregistrerUtilisateur(Client utilisateur);
-	
-	Client recupererUtilisateur(String email, String motDePasse);
-	
-	Page<Client> recupererUtilisateurs(Pageable pageable);
-	
-	Client ajouterUtilisateur(String nom, String prenom, String email, String motDePasse);
-
-
+	Utilisateur ajouterUtilisateur(Utilisateur utilisateur);
 }
