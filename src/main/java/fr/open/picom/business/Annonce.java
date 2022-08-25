@@ -11,12 +11,16 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import io.micrometer.core.lang.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Annonce {
 	
@@ -48,14 +52,17 @@ public class Annonce {
 	private double montantRegleEnEuros;
 	
 	//TODO utilsateur annonce non necessaire
+	@JsonIgnore
 	@ManyToOne
 	private Client client;
 	
 	//TODO verifier l'attribut mappedby
+	@JsonIgnore
 	@ManyToMany
 	private List<TrancheHoraire> trancheHoraires;
 	
 	//TODO tcheck the relation
+	@JsonIgnore
 	@ManyToMany
 	private List<Zone> zones;
 	
