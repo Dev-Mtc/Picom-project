@@ -21,6 +21,12 @@ public class AnnonceServiceImpl implements AnnonceService {
 		
 		return annonceDao.findAll();
 	}
+
+	@Override
+	public Annonce ajouterAnnonce(Annonce annonce) {
+
+		return annonceDao.save(annonce);
+	}
 	
 	
 	

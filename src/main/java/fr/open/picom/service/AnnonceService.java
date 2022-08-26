@@ -6,4 +6,5 @@ import fr.open.picom.business.Annonce;
 
 public interface AnnonceService {
 	List<Annonce> findAnnonces();
+	Annonce ajouterAnnonce(Annonce annonce);
 }

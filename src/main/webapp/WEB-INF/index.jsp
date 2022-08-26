@@ -7,6 +7,7 @@
 <body>
 
 	<p>Working !</p>
-	<a href="inscription">S'inscrire</a>
+	<a href="connexion">Se connecter</a>
+	<a href="annonces">Ajouter une annonce</a>
 </body>
 </html>

@@ -2,8 +2,10 @@ package fr.open.picom.business;
 
 import javax.persistence.Entity;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 
+@AllArgsConstructor
 @Entity
 @EqualsAndHashCode(callSuper = true)
 public class Administrateur extends Utilisateur {
