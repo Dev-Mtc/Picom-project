@@ -3,13 +3,21 @@ package fr.open.picom.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+
+import fr.open.picom.business.Administrateur;
 
 import fr.open.picom.business.Client;
 import fr.open.picom.business.Utilisateur;
@@ -17,6 +25,7 @@ import fr.open.picom.dao.UtilisateurDao;
 import fr.open.picom.dto.ClientDto;
 import fr.open.picom.exception.UtilisateurExistantException;
 import fr.open.picom.service.UtilisateurService;
+
 import lombok.AllArgsConstructor;
 
 
@@ -24,7 +33,11 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsService{
 
+
+	private UtilisateurDao utilisateurDao;
+
 	private final UtilisateurDao utilisateurDao;
+
 	private final PasswordEncoder passwordEncoder;
 
 	@Override
@@ -37,6 +50,25 @@ public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsSe
 		return utilisateurDao.save(utilisateur);
 	}
 
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
+		Utilisateur userFind = utilisateurDao.findByEmail(username);
+		
+		// on test si l'utilisateur donné en parametre est une instance de administrateur
+
+   	 	List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        if(userFind instanceof Administrateur) {
+        	 authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        }else if (userFind instanceof Client) {
+        	 authorities.add(new SimpleGrantedAuthority("ROLE_CLIENT"));
+        }
+       	User user = new User(userFind.getEmail(), passwordEncoder.encode(userFind.getMotDePasse()), authorities);
+     
+       	return user;
+        
+	}
 
 	@Override
 	public Client ajouterClient(ClientDto clientDto) {
@@ -61,38 +93,10 @@ public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsSe
 	}
 	
 
-	/*
-	 * Cette méthode aurait pu faire appel à un serveur externe (OAuth2)
-	 * (alternative JWT)
-	 * 
-	 */
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
-		if (username.trim().isEmpty()) {
-			throw new UsernameNotFoundException("username is empty");
-		}
-
-		Utilisateur utilisateur = utilisateurDao.findByEmail(username);
-		if (utilisateur == null) {
-			throw new UsernameNotFoundException("user " + username + " not found");
-		}
-		List<GrantedAuthority> grantedAuthorities = getGrantedAuthorities(utilisateur);
-		User user = new User(utilisateur.getEmail(), utilisateur.getMotDePasse(), grantedAuthorities);
-		System.out.println(user);
-		return user;
-	}
 
 	
 
-	private List<GrantedAuthority> getGrantedAuthorities(Utilisateur utilisateur) {
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-//        Set<Role> roles = utilisateur.getRoles();
-//        for (Role role : roles) {
-//        	authorities.add(new SimpleGrantedAuthority(role.getNom()));	
-//		}
-        return authorities;
-    }
+
 	
 
 }

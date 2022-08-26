@@ -7,24 +7,32 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import lombok.AllArgsConstructor;
+
 @Configuration
+@AllArgsConstructor
 public class PicomAuthSecurity {
 	private UserDetailsService userDetailsService;
 	private PasswordEncoder passwordEncoder;
 
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf().disable().authenticationManager(new AuthManager(userDetailsService, passwordEncoder))
-		.formLogin().loginPage("/index")
-        .loginProcessingUrl("/login")
-        .defaultSuccessUrl("/picom")
-        .failureForwardUrl("/index?notification=Email%20ou%20mot%20de%20passe%20incorrect")
-        .and()
-        .logout()
-        .logoutUrl("/deconnexion")
-        .logoutSuccessUrl("/index?notification=Au%20revoir")
-        .and()
+		http.csrf().disable()
+		
+		.authenticationManager(new AuthManager(userDetailsService, passwordEncoder))
+		
 
+        .formLogin()
+        	// On fait référence à une URL
+          //  .loginPage("/login")
+            .loginProcessingUrl("/login")
+            .defaultSuccessUrl("/")
+            .failureForwardUrl("/index?notification=Email%20ou%20mot%20de%20passe%20incorrect")
+            .and()
+            .logout()
+            .logoutUrl("/deconnexion")
+            .logoutSuccessUrl("/index?notification=Au%20revoir")
+            .and()
         .authorizeRequests()
         .antMatchers("/h2-console").permitAll()  
         .antMatchers("/tarif").authenticated()
@@ -34,14 +42,14 @@ public class PicomAuthSecurity {
         .antMatchers("/diffusions").authenticated()
         .antMatchers("/diffusion").authenticated()
         .antMatchers("/utilisateurs").authenticated()
-
+        
         
         // Pour la console H2 (à ne pas utiliser en prod)
         .and()
         .headers().frameOptions().disable();
+		//http.authorizeRequests().anyRequest().permitAll();
         
        return http.build();
-		//http.authorizeRequests().anyRequest().permitAll();
 		
 
 	}

@@ -1,6 +1,7 @@
 package fr.open.picom.initialisation;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 
@@ -27,6 +28,7 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 	private final TrancheHoraireDao trancheHoraireDao;
 	private final ClientDao clientDao;
 	private final AdministrateurDao administrateurDao;
+	private final PasswordEncoder passwordEncoder;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -104,13 +106,13 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 		clientTest.setNom("Testeur");
 		clientTest.setPrenom("Dev");
 		clientTest.setEmail("client1@orsys.fr");
-		clientTest.setMotDePasse("12345678");
+		clientTest.setMotDePasse(passwordEncoder.encode("12345678"));
 		clientTest.setNumeroDeTelephone("079");
 		clientDao.save(clientTest);
 	}
 
 	private void ajouterAdmin() {
-		Administrateur admin = new Administrateur("Admin", "Test", "admin1@orsys.fr", "12345678");
+		Administrateur admin = new Administrateur("Admin", "Test", "admin1@orsys.fr", passwordEncoder.encode("12345678"));
 		administrateurDao.save(admin);
 	}
 
