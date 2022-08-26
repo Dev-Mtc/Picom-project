@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -22,6 +24,7 @@ public class Tarif {
 	@NotBlank(message = "Merci de préciser le prix en euros")
 	private double prixEnEuros;
 
+	
 	@OneToOne
 	private Zone zone;
 

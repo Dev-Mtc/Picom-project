@@ -10,6 +10,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +34,7 @@ public class Zone {
 	@NotBlank(message="Merci d'indiquer le nom de la zone")
 	private String nom;
 	
+	@JsonIgnore
 	@ManyToMany
 	private List<Annonce> annonces;
 	
