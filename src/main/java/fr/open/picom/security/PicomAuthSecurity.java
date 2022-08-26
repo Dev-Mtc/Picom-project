@@ -39,9 +39,9 @@ public class PicomAuthSecurity {
         // Pour la console H2 (à ne pas utiliser en prod)
         .and()
         .headers().frameOptions().disable();
+		//http.authorizeRequests().anyRequest().permitAll();
         
        return http.build();
-		//http.authorizeRequests().anyRequest().permitAll();
 		
 
 	}
