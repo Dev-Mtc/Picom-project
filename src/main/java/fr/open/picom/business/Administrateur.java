@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
+
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
