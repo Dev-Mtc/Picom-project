@@ -34,7 +34,6 @@ import lombok.AllArgsConstructor;
 public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsService{
 
 
-	private UtilisateurDao utilisateurDao;
 
 	private final UtilisateurDao utilisateurDao;
 
