@@ -2,6 +2,7 @@ package fr.open.picom.controller.rest;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,7 @@ public class AnnonceRestController {
 	 * @return listes d'annonces
 	 */
 	@GetMapping("/")
+	@RolesAllowed("CLIENT")
 	public List<Annonce> annonceGet() {
 		return annonceService.findAnnonces();
 	}
@@ -42,6 +44,7 @@ public class AnnonceRestController {
 	 * @return l'annonce crée
 	 */
 	@PostMapping("new/annonce")
+	@RolesAllowed("CLIENT")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	public Annonce annoncePost(@Valid @RequestBody Annonce annonce, BindingResult result) {
 		

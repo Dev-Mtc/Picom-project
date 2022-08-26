@@ -16,4 +16,6 @@ public interface UtilisateurDao extends JpaRepository<Utilisateur, Long> {
     Utilisateur findUserByEmailPassword(@Param("email") String email, @Param("password") String password);
 	
 	List<Utilisateur> findAll();
+
+	Utilisateur findByEmail(String username);
 }
