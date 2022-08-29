@@ -21,4 +21,10 @@ public class ZoneServiceImpl implements ZoneService {
 		return zoneDao.findAll();
 	}
 
+	@Override
+	public Zone findById(Long id) {
+	
+		return zoneDao.findById(id).orElse(null);
+	}
+
 }

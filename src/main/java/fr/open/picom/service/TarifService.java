@@ -3,6 +3,7 @@ package fr.open.picom.service;
 import java.util.List;
 
 import fr.open.picom.business.Tarif;
+import fr.open.picom.dto.TarifDto;
 
 public interface TarifService {
 
@@ -10,7 +11,7 @@ public interface TarifService {
 	
 	Tarif recupererTarif(Long id);
 	
-	Tarif ajouterTarif(Tarif tarif);
+	Tarif ajouterTarif(TarifDto tarif);
 
 	boolean supprimerTarif(Long id);
 	

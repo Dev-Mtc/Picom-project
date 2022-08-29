@@ -106,5 +106,11 @@ public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsSe
 		return clientSend;
 		
 	}
+
+	@Override
+	public Client getClientByUserName(String email) {
+		
+		return clientDao.findUserByEmail(email);
+	}
 	
 }
