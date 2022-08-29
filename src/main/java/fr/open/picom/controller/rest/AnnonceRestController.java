@@ -32,13 +32,13 @@ public class AnnonceRestController {
 	 * Methode qui renvoi la liste des annonces disponnible dans la base de données
 	 * @return listes d'annonces
 	 */
-	@GetMapping("/")
+	@GetMapping(path="all")
 	@RolesAllowed("CLIENT")
 	public List<Annonce> annonceGet() {
 		return annonceService.findAnnonces();
 	}
 
-	/**
+	/** 
 	 * Cette méthode renvoie une page d'utilisateur
 	 * @param annonce contient le corp de l'annonce 
 	 * @return l'annonce crée
@@ -47,7 +47,6 @@ public class AnnonceRestController {
 	@RolesAllowed("CLIENT")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	public Annonce annoncePost(@Valid @RequestBody Annonce annonce, BindingResult result) {
-		
 		return annonceService.ajouterAnnonce(annonce);		
 	}
 	

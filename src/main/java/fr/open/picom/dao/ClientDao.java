@@ -11,4 +11,6 @@ public interface ClientDao extends JpaRepository<Client, Long> {
 	@Query("SELECT u FROM Utilisateur u WHERE u.email = :email AND u.motDePasse = :password ")
     Utilisateur findUserByEmailPassword(@Param("email") String email, @Param("password") String password);
 	
+	
+	Client findUserByEmail(String email);
 }
