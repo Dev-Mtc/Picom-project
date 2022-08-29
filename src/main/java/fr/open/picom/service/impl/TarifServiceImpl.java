@@ -22,6 +22,9 @@ public class TarifServiceImpl implements TarifService{
 	ZoneService zoneService;
 	TrancheHoraireService trancheHoraireService;
 	
+	ZoneService zoneService;
+	TrancheHoraireService trancheHoraireService;
+	
 	@Override
 	public List<Tarif> recupererTarifs() {
 		return tarifDao.findAll();
@@ -34,10 +37,13 @@ public class TarifServiceImpl implements TarifService{
 
 	@Override
 	public Tarif ajouterTarif(TarifDto tarif) {
+		
 		Tarif tarifSave = new Tarif();
+		
 		tarifSave.setPrixEnEuros(tarif.getPrixEnEuros());
-		//tarifSave.setTrancheHoraire(trancheHoraireService.));
-		//tarifSave.setZone(zoneService.find);
+		tarifSave.setZone(zoneService.findById(tarif.getZoneId()));
+		tarifSave.setTrancheHoraire(trancheHoraireService.findById(tarif.getTrancheHoraireId()));
+
 		return tarifDao.save(tarifSave);
 	}
 
@@ -50,7 +56,7 @@ public class TarifServiceImpl implements TarifService{
 		} else {
 			tarifDao.delete(tarif);
 			return true;
-		}
+		} 
 	}
 
 	@Override

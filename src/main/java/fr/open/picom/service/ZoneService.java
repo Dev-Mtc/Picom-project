@@ -7,4 +7,5 @@ import fr.open.picom.business.Zone;
 public interface ZoneService {
 	
 	List<Zone> findAllZones();
+	Zone findById(Long id);
 }

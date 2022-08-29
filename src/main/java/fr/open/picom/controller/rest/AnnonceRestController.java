@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.open.picom.business.Annonce;
+import fr.open.picom.dto.AnnonceDto;
 import fr.open.picom.service.AnnonceService;
 import lombok.AllArgsConstructor;
 
@@ -46,7 +47,7 @@ public class AnnonceRestController {
 	@PostMapping("new/annonce")
 	@RolesAllowed("CLIENT")
 	@ResponseStatus(code=HttpStatus.CREATED)
-	public Annonce annoncePost(@Valid @RequestBody Annonce annonce, BindingResult result) {
+	public Annonce annoncePost(@Valid @RequestBody AnnonceDto annonce, BindingResult result) {
 		return annonceService.ajouterAnnonce(annonce);		
 	}
 	

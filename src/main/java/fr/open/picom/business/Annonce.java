@@ -57,12 +57,12 @@ public class Annonce {
 	private Client client;
 	
 	//TODO verifier l'attribut mappedby
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToMany
 	private List<TrancheHoraire> trancheHoraires;
 	
 	//TODO tcheck the relation
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToMany
 	private List<Zone> zones;
 	
