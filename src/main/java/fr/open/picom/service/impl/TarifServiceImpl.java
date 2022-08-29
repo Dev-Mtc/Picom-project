@@ -22,8 +22,7 @@ public class TarifServiceImpl implements TarifService{
 	ZoneService zoneService;
 	TrancheHoraireService trancheHoraireService;
 	
-	ZoneService zoneService;
-	TrancheHoraireService trancheHoraireService;
+
 	
 	@Override
 	public List<Tarif> recupererTarifs() {
