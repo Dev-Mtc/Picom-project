@@ -21,7 +21,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
 @RestController
-@RequestMapping("api/")
+@RequestMapping("api/tarifs")
 public class TarifRestController {
 
 	private final TarifService tarifService;
@@ -30,7 +30,7 @@ public class TarifRestController {
 	 * 
 	 * @return
 	 */
-	@GetMapping("tarifs")
+	@GetMapping("")
 	public List<Tarif> emotionsGet() {
 		return tarifService.recupererTarifs();
 	}

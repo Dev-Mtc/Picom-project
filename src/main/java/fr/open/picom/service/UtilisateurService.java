@@ -20,4 +20,5 @@ public interface UtilisateurService {
 	
 	Client ajouterClient(@Valid ClientDto clientDto);
 
+	ClientDto getInfoUserByEmail(String email);
 }

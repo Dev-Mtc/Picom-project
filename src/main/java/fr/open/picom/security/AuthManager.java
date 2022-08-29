@@ -1,7 +1,5 @@
 package fr.open.picom.security;
 
-import java.util.Date;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -21,19 +19,17 @@ public class AuthManager implements AuthenticationManager {
 		this.passwordEncoder = passwordEncoder;
 	}
 
-	// Authentification utilisant la DAO
 	@Bean
 	DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 		authProvider.setUserDetailsService(userDetailsService);
 		authProvider.setPasswordEncoder(passwordEncoder);
-
 		return authProvider;
 	}
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		System.out.println("OK dans le CustomAuthenticationManager : " + new Date() + authentication);
+
 		return authenticationProvider().authenticate(authentication); 		
 	} 
 }

@@ -6,52 +6,50 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import fr.open.picom.security.event.AuthFail;
+import fr.open.picom.security.event.AuthSuccess;
 import lombok.AllArgsConstructor;
 
 @Configuration
 @AllArgsConstructor
 public class PicomAuthSecurity {
+
 	private UserDetailsService userDetailsService;
 	private PasswordEncoder passwordEncoder;
 
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf().disable()
-		
-		.authenticationManager(new AuthManager(userDetailsService, passwordEncoder))
-		
 
-        .formLogin()
-        	// On fait référence à une URL
-          //  .loginPage("/login")
-            .loginProcessingUrl("/login")
-            .defaultSuccessUrl("/")
-            .failureForwardUrl("/index?notification=Email%20ou%20mot%20de%20passe%20incorrect")
-            .and()
-            .logout()
-            .logoutUrl("/deconnexion")
-            .logoutSuccessUrl("/index?notification=Au%20revoir")
-            .and()
-        .authorizeRequests()
-        .antMatchers("/h2-console").permitAll()  
-        .antMatchers("/tarif").authenticated()
-        .antMatchers("/tarifs").authenticated()
-        .antMatchers("/annonce").authenticated()
-        .antMatchers("/annonces").authenticated()
-        .antMatchers("/diffusions").authenticated()
-        .antMatchers("/diffusion").authenticated()
-        .antMatchers("/utilisateurs").authenticated()
-        
-        
-        // Pour la console H2 (à ne pas utiliser en prod)
-        .and()
-        .headers().frameOptions().disable();
-		//http.authorizeRequests().anyRequest().permitAll();
-        
-       return http.build();
-		
+		http.csrf().disable()
+				.formLogin().successHandler(authSuccess()).failureHandler(authFail())
+				.and().httpBasic()		
+				.and()
+				.cors()
+				.and()
+				.authenticationManager(new AuthManager(userDetailsService, passwordEncoder)).authorizeRequests()
+				.antMatchers("/h2-console/**").permitAll()
+				.antMatchers("/api/**").authenticated()
+				.antMatchers("/api/annonces/**").hasAuthority("CLIENT")
+//				.antMatchers("/api/tarifs/**").hasRole("ADMIN")
+				.antMatchers("/").authenticated()
+				.and()
+				.headers().frameOptions().disable();
+		return http.build();
 
 	}
+	
+	@Bean
+	AuthenticationSuccessHandler authSuccess() {
+		return new AuthSuccess();
+	}
+	@Bean
+	AuthenticationFailureHandler authFail() {
+		return new AuthFail();
+	}
+	
+	
 
 }

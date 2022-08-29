@@ -5,13 +5,20 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 @NoArgsConstructor
 @Data
+@Getter
+@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ClientDto {
 
@@ -25,9 +32,9 @@ public class ClientDto {
 	@Pattern(regexp = "^([A-Za-z0-9-])+(.[A-Za-z0-9-]+)*@orsys.fr$", message = "Votre adresse doit faire partie du nom de domaine orsys.fr")
 	String email;
 
-	// @JsonProperty(access = Access.WRITE_ONLY)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@Size(min = 3, message = "{client.mot-de-passe.invalide}")
-	String motDePasse;
+	String motDePasse;	
 	
 	private String numeroDeTelephone;
 
