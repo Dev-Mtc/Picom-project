@@ -19,6 +19,8 @@ import lombok.AllArgsConstructor;
 public class TarifServiceImpl implements TarifService{
 	
 	TarifDao tarifDao;
+	ZoneService zoneService;
+	TrancheHoraireService trancheHoraireService;
 	
 	ZoneService zoneService;
 	TrancheHoraireService trancheHoraireService;
@@ -41,7 +43,7 @@ public class TarifServiceImpl implements TarifService{
 		tarifSave.setPrixEnEuros(tarif.getPrixEnEuros());
 		tarifSave.setZone(zoneService.findById(tarif.getZoneId()));
 		tarifSave.setTrancheHoraire(trancheHoraireService.findById(tarif.getTrancheHoraireId()));
-		
+
 		return tarifDao.save(tarifSave);
 	}
 

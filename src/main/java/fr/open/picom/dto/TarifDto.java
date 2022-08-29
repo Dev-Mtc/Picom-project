@@ -1,5 +1,7 @@
 package fr.open.picom.dto;
 
+
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +20,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
+
 public class TarifDto {
 
 	@Id
@@ -33,6 +36,7 @@ public class TarifDto {
 
 	@OneToOne
 	private Long trancheHoraireId;
+
 
 	
 }
