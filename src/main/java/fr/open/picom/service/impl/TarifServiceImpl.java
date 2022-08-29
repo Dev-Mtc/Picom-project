@@ -7,7 +7,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.open.picom.business.Tarif;
 import fr.open.picom.dao.TarifDao;
+import fr.open.picom.dto.TarifDto;
 import fr.open.picom.service.TarifService;
+import fr.open.picom.service.TrancheHoraireService;
+import fr.open.picom.service.ZoneService;
 import lombok.AllArgsConstructor;
 
 
@@ -16,6 +19,8 @@ import lombok.AllArgsConstructor;
 public class TarifServiceImpl implements TarifService{
 	
 	TarifDao tarifDao;
+	ZoneService zoneService;
+	TrancheHoraireService trancheHoraireService;
 	
 	@Override
 	public List<Tarif> recupererTarifs() {
@@ -28,8 +33,12 @@ public class TarifServiceImpl implements TarifService{
 	}
 
 	@Override
-	public Tarif ajouterTarif(Tarif tarif) {
-		return tarifDao.save(tarif);
+	public Tarif ajouterTarif(TarifDto tarif) {
+		Tarif tarifSave = new Tarif();
+		tarifSave.setPrixEnEuros(tarif.getPrixEnEuros());
+		//tarifSave.setTrancheHoraire(trancheHoraireService.));
+		//tarifSave.setZone(zoneService.find);
+		return tarifDao.save(tarifSave);
 	}
 
 	@Transactional
