@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.open.picom.business.Tarif;
+import fr.open.picom.dto.TarifDto;
 import fr.open.picom.service.TarifService;
 import lombok.AllArgsConstructor;
 
@@ -42,7 +43,7 @@ public class TarifRestController {
 	
 	@PostMapping("tarif")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Tarif tarifsPostUtilisantLeCorpsDeLaRequete(@RequestBody Tarif tarif) {
+	public Tarif tarifsPostUtilisantLeCorpsDeLaRequete(@RequestBody TarifDto tarif) {
 		return tarifService.ajouterTarif(tarif);
 	}
 	
