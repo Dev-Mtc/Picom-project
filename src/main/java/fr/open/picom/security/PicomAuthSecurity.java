@@ -34,8 +34,8 @@ public class PicomAuthSecurity {
 
 				.antMatchers("/api/utilisateurs/clientsDto").permitAll()
 				.antMatchers("/api/utilisateurs/utilisateur").permitAll()
-				.antMatchers("/api/annonces/**").hasAuthority("CLIENT")
 				.antMatchers("/api/**").authenticated()
+				.antMatchers("/api/annonces/**").hasAuthority("CLIENT")
 //				.antMatchers("/api/tarifs/**").hasRole("ADMIN")
 				.antMatchers("/").authenticated()
 				.and()
