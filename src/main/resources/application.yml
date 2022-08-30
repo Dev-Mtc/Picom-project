@@ -25,8 +25,10 @@ spring:
     rest:
       detection-strategy: annotated
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:picom
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/picom
+    username: postgres
+    password: root
   h2:
     console:
       enabled: true
@@ -36,7 +38,7 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
+        dialect:org.hibernate.dialect.PostgreSQL95Dialect
     show-sql: true
   mvc:
     view:
