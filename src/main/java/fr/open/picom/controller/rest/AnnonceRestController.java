@@ -48,6 +48,7 @@ public class AnnonceRestController {
 	@RolesAllowed("CLIENT")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	public Annonce annoncePost(@Valid @RequestBody AnnonceDto annonce, BindingResult result) {
+		System.out.println(annonce);
 		return annonceService.ajouterAnnonce(annonce);		
 	}
 	

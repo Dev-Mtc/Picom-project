@@ -3,8 +3,7 @@ package fr.open.picom.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.Lob;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -14,6 +13,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 @NoArgsConstructor
@@ -21,11 +21,14 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@ToString
 public class AnnonceDto {
 
 	private LocalDateTime dateHeureCreation;
 	private LocalDateTime dateHeureDebut;
 	private LocalDateTime dateHeureFin;
+	
+	@Lob
 	private String contenu;
 	
 	
@@ -43,23 +46,17 @@ public class AnnonceDto {
 	//@NotBlank(message="Merci de préciser le CIV")
 	private String cryptoGramme;
 	
-	//@NotBlank(message="Merci de préciser le montant")
+	//@NotBlank(mesObjectMapper  sage="Merci de préciser le montant")
 	@Nullable
 	private double montantRegleEnEuros;
 	
 	
 	@JsonIgnore
-	@ManyToOne
 	private String clientEmail;
 	
-
-
-	@ManyToMany
+	
 	private List<Long> trancheHorairesId;
 	
-
-
-	@ManyToMany
 	private List<Long> zonesId;
 
 	

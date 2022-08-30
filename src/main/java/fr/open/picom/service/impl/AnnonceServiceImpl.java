@@ -36,14 +36,15 @@ public class AnnonceServiceImpl implements AnnonceService {
 		Annonce annonceSave = new Annonce();
 		
 		List<Zone> zones = new ArrayList<>();
+		System.out.println(annonce.getZonesId());
+		System.out.println(annonce.getTrancheHorairesId());
 		
-		for(Long zoneId : annonce.getZonesId()) {
-			zones.add(zoneService.findById(zoneId));
-		}
+		for(Long zoneId : annonce.getZonesId()) zones.add(zoneService.findById(zoneId));
+		
 		List<TrancheHoraire> tranchesHoraires = new ArrayList<>();
-		for(Long thId : annonce.getTrancheHorairesId()) {
-			tranchesHoraires.add(thService.findById(thId));
-		}
+		
+		for(Long thId : annonce.getTrancheHorairesId()) tranchesHoraires.add(thService.findById(thId));
+		
 		
 		annonceSave.setDateHeureCreation(annonce.getDateHeureCreation());
 		annonceSave.setDateHeureDebut(annonce.getDateHeureDebut());

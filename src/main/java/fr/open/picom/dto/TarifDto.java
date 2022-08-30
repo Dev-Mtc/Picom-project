@@ -5,8 +5,13 @@ package fr.open.picom.dto;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< HEAD
 import javax.persistence.OneToOne;
+=======
+import javax.validation.constraints.NotBlank;
+>>>>>>> e671430 (Updating some files)
 
+import io.micrometer.core.lang.NonNull;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
@@ -26,14 +31,18 @@ public class TarifDto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+<<<<<<< HEAD
 	//@NotBlank(message = "Merci de préciser le prix en euros")
+=======
+	@NonNull
+	@NotBlank(message = "Merci de préciser le prix en euros")
+>>>>>>> e671430 (Updating some files)
 	private double prixEnEuros;
 
-	
-	@OneToOne
+	@NonNull
 	private Long zoneId;
-
-	@OneToOne
+	
+	@NonNull
 	private Long trancheHoraireId;
 
 

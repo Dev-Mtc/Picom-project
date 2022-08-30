@@ -31,6 +31,12 @@ public class PicomAuthSecurity {
 				.and()
 				.authenticationManager(new AuthManager(userDetailsService, passwordEncoder)).authorizeRequests()
 				.antMatchers("/h2-console/**").permitAll()
+<<<<<<< HEAD
+=======
+				.antMatchers("/api/utilisateurs/clientsDto").permitAll()
+				.antMatchers("/api/utilisateurs/utilisateur").permitAll()
+				.antMatchers("/api/**").authenticated()
+>>>>>>> e671430 (Updating some files)
 				.antMatchers("/api/annonces/**").hasAuthority("CLIENT")
 				.antMatchers("/api/**").authenticated()
 //				.antMatchers("/api/tarifs/**").hasRole("ADMIN")
