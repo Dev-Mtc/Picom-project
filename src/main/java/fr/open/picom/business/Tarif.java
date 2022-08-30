@@ -21,14 +21,11 @@ public class Tarif {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-<<<<<<< HEAD
 
-	//@NotBlank(message = "Merci de préciser le prix en euros")
-=======
+	
 	
 	@NonNull
 	@NotBlank(message = "Merci de préciser le prix en euros")
->>>>>>> e671430 (Updating some files)
 	private double prixEnEuros;
 
 	@NonNull
