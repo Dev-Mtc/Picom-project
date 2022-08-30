@@ -32,7 +32,6 @@ public class UtilisateurRestController {
 	
 	UtilisateurService utilisateurService;
 	
-	//TODO create ClientDto object
 	
 	@GetMapping("utilisateurs")
 	public List<Utilisateur> utilisateursGet() {

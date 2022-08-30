@@ -32,7 +32,7 @@ public class ClientDto {
 	@Pattern(regexp = "^([A-Za-z0-9-])+(.[A-Za-z0-9-]+)*@orsys.fr$", message = "Votre adresse doit faire partie du nom de domaine orsys.fr")
 	String email;
 
-	@JsonProperty(access = Access.WRITE_ONLY)
+	@JsonProperty(access = Access.READ_WRITE)
 	@Size(min = 3, message = "{client.mot-de-passe.invalide}")
 	String motDePasse;	
 	
