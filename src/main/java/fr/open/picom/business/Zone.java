@@ -35,10 +35,10 @@ public class Zone {
 	private String nom;
 	
 	@JsonIgnore
-	@ManyToMany
+	@ManyToMany(mappedBy="zones")
 	private List<Annonce> annonces;
 	
-	@OneToMany
+	@OneToMany(mappedBy="zone")
 	private List<Arret> arrets;
 	
 	public Zone(String prmNom) {

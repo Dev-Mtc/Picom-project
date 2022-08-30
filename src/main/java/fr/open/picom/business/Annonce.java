@@ -54,17 +54,14 @@ public class Annonce {
 	@Nullable
 	private double montantRegleEnEuros;
 	
-	//TODO utilsateur annonce non necessaire
 	@JsonIgnore
 	@ManyToOne
 	private Client client;
 	
-	//TODO verifier l'attribut mappedby
 //	@JsonIgnore
 	@ManyToMany
 	private List<TrancheHoraire> trancheHoraires;
 	
-	//TODO tcheck the relation
 //	@JsonIgnore
 	@ManyToMany
 	private List<Zone> zones;

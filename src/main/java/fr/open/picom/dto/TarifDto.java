@@ -29,8 +29,6 @@ public class TarifDto {
 
 
 	@NonNull
-	@NotBlank(message = "Merci de préciser le prix en euros")
-
 	private double prixEnEuros;
 
 	@NonNull

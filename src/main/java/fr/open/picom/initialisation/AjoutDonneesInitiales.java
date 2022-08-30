@@ -4,7 +4,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-
 import fr.open.picom.business.Arret;
 import fr.open.picom.business.TrancheHoraire;
 
@@ -32,48 +31,48 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-
 		ajouterZones();
 		ajouterArrets();
 		ajouterHoraires();
-		ajouterClient();
-		ajouterAdmin();
+		//ajouterClient();
+		//ajouterAdmin();
 
 	}
 
 	private void ajouterZones() {
-		
-		zoneDao.save(new Zone("Republique"));
-		zoneDao.save(new Zone("Avenue kennedy"));
-		zoneDao.save(new Zone("Open"));
-		zoneDao.save(new Zone("Developpeur"));
-		zoneDao.save(new Zone("LA MEL"));
-		
+		if (zoneDao.count() == 0) {
+
+			zoneDao.save(new Zone("Republique"));
+			zoneDao.save(new Zone("Avenue kennedy"));
+			zoneDao.save(new Zone("Open"));
+			zoneDao.save(new Zone("Developpeur"));
+			zoneDao.save(new Zone("LA MEL"));
+		}
+
 	}
 
 	private void ajouterArrets() {
 		if (arretDao.count() == 0) {
-		arretDao.save(new Arret("Invalides1", 1D, 1D));
-		arretDao.save(new Arret("Invalides2", 2D, 2D));
-		arretDao.save(new Arret("Invalides3", 3D, 3D));
-		arretDao.save(new Arret("Invalides4", 4D, 4D));
-		arretDao.save(new Arret("Invalides5", 5D, 5D));
-		arretDao.save(new Arret("Invalides6", 6D, 6D));
-		arretDao.save(new Arret("Invalides7", 7D, 7D));
-		arretDao.save(new Arret("Invalides8", 8D, 8D));
-		arretDao.save(new Arret("Invalides9", 9D, 9D));
-		arretDao.save(new Arret("Invalides10", 10D, 10D));
-		arretDao.save(new Arret("Invalides11", 11D, 11D));
-		arretDao.save(new Arret("Invalides12", 12D, 12D));
-		arretDao.save(new Arret("Invalides13", 13D, 13D));
-		arretDao.save(new Arret("Invalides14", 14D, 14D));
-		arretDao.save(new Arret("Invalides15", 15D, 15D));
-		arretDao.save(new Arret("Invalides16", 16D, 16D));
-		arretDao.save(new Arret("Invalides17", 17D, 17D));
-		arretDao.save(new Arret("Invalides18", 18D, 18D));
-		arretDao.save(new Arret("Invalides19", 19D, 19D));
-		arretDao.save(new Arret("Invalides20", 20D, 20D));
+			arretDao.save(new Arret("Invalides1", 1D, 1D));
+			arretDao.save(new Arret("Invalides2", 2D, 2D));
+			arretDao.save(new Arret("Invalides3", 3D, 3D));
+			arretDao.save(new Arret("Invalides4", 4D, 4D));
+			arretDao.save(new Arret("Invalides5", 5D, 5D));
+			arretDao.save(new Arret("Invalides6", 6D, 6D));
+			arretDao.save(new Arret("Invalides7", 7D, 7D));
+			arretDao.save(new Arret("Invalides8", 8D, 8D));
+			arretDao.save(new Arret("Invalides9", 9D, 9D));
+			arretDao.save(new Arret("Invalides10", 10D, 10D));
+			arretDao.save(new Arret("Invalides11", 11D, 11D));
+			arretDao.save(new Arret("Invalides12", 12D, 12D));
+			arretDao.save(new Arret("Invalides13", 13D, 13D));
+			arretDao.save(new Arret("Invalides14", 14D, 14D));
+			arretDao.save(new Arret("Invalides15", 15D, 15D));
+			arretDao.save(new Arret("Invalides16", 16D, 16D));
+			arretDao.save(new Arret("Invalides17", 17D, 17D));
+			arretDao.save(new Arret("Invalides18", 18D, 18D));
+			arretDao.save(new Arret("Invalides19", 19D, 19D));
+			arretDao.save(new Arret("Invalides20", 20D, 20D));
 
 		}
 
@@ -98,10 +97,10 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 
 		}
 
-
 	}
 
 	private void ajouterClient() {
+		
 		Client clientTest = new Client();
 		clientTest.setNom("Testeur");
 		clientTest.setPrenom("Dev");
@@ -112,7 +111,8 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 	}
 
 	private void ajouterAdmin() {
-		Administrateur admin = new Administrateur("Admin", "Test", "admin1@orsys.fr", passwordEncoder.encode("12345678"));
+		Administrateur admin = new Administrateur("Admin", "Test", "admin1@orsys.fr",
+				passwordEncoder.encode("12345678"));
 		administrateurDao.save(admin);
 	}
 

@@ -4,8 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotBlank;
 
 import io.micrometer.core.lang.NonNull;
 import lombok.AllArgsConstructor;
@@ -25,7 +25,7 @@ public class Tarif {
 	
 	
 	@NonNull
-	@NotBlank(message = "Merci de préciser le prix en euros")
+	//@NotBlank(message = "Merci de préciser le prix en euros")
 	private double prixEnEuros;
 
 	@NonNull
@@ -33,7 +33,7 @@ public class Tarif {
 	private Zone zone;
 	
 	@NonNull
-	@OneToOne
+	@ManyToOne
 	private TrancheHoraire trancheHoraire;
 
 }

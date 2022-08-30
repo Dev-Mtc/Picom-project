@@ -32,7 +32,7 @@ public class TrancheHoraire {
 	private int debut;
 	
 	@JsonIgnore
-	@ManyToMany
+	@ManyToMany(mappedBy = "trancheHoraires")
 	private List<Annonce> annonce;
 
 	
